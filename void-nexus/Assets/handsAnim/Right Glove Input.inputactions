@@ -1,0 +1,34 @@
+{
+    "name": "Right Glove Input",
+    "maps": [
+        {
+            "name": "Right Glove",
+            "id": "4e110612-15cc-426c-ac6c-085c27eb0555",
+            "actions": [
+                {
+                    "name": "Grip",
+                    "type": "Value",
+                    "id": "c1ead251-7f15-4292-b52b-c78baee6b441",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7551d78b-dba9-440f-9c6c-01334db5091c",
+                    "path": "<XRController>{RightHand}/gripButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
