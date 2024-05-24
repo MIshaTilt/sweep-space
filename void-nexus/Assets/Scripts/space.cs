@@ -77,7 +77,7 @@ public class space : Sounds
 
         if (rGrab.action.ReadValue<float>() > 0.2f && (lGrab.action.ReadValue<float>() <= 0.2f || lInvChecker.activeSelf) && rInvChecker.activeSelf)
         {
-            if (!_RgrabbingActive && !_LgrabbingActive && Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out eraycastHit, 2f))
+            if (!_RgrabbingActive && !_LgrabbingActive && Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out eraycastHit, 2f, grab))
             {
                 _RgrabbingActive = true;
                 initialHandPosition = rPos.action.ReadValue<Vector3>();
@@ -97,7 +97,7 @@ public class space : Sounds
         }
         else if (lGrab.action.ReadValue<float>() > 0.2f && (rGrab.action.ReadValue<float>() <= 0.2f || !rInvChecker.activeSelf) && lInvChecker.activeSelf && Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out fraycastHit, 2f))
         {
-            if (!_LgrabbingActive && !_RgrabbingActive && Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out fraycastHit, 2f))
+            if (!_LgrabbingActive && !_RgrabbingActive && Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out fraycastHit, 2f, grab))
             {
                 _LgrabbingActive = true;
                 initialHandPosition = lPos.action.ReadValue<Vector3>();
