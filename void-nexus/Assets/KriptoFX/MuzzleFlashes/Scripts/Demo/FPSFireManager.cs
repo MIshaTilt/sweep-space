@@ -12,6 +12,7 @@ public class FPSFireManager : Sounds
 {
     public ImpactInfo[] ImpactElemets = new ImpactInfo[0];
     public ImpactInfo ImpactElemet;
+    public LayerMask IgnoreMe;
     [Space]
     public float BulletDistance = 100;
     public GameObject ImpactEffect;
@@ -129,7 +130,7 @@ public class FPSFireManager : Sounds
         {
             RaycastHit hit;
             var ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out hit, BulletDistance))
+            if (Physics.Raycast(ray, out hit, BulletDistance, ~IgnoreMe))
             {
                 var effect = GetImpactEffect(hit.transform.gameObject);
                 if (effect == null)
