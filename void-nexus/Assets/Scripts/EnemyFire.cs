@@ -34,6 +34,11 @@ public class EnemyFire : Sounds
     [Tooltip("If enabled, a random offset is applied to the spawn point. (This eliminates the \"Wagon-Wheel\" effect)")]
     private bool applyStrobeOffset = true;
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     private void Update()
     {
         if (!alreadyAttacked)
