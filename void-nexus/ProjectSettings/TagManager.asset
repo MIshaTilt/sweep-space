@@ -10,6 +10,7 @@ TagManager:
   - reload
   - pistol
   - grenadeLauncher
+  - EventSystem
   layers:
   - Default
   - TransparentFX

@@ -107,6 +107,7 @@ namespace Michsky.UI.Heat
             }
         }
 
+
         void Initialize()
         {
 #if UNITY_EDITOR

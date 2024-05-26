@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using UnityEngine.XR.OpenXR.Input;
 
 public class space : Sounds
@@ -68,6 +69,20 @@ public class space : Sounds
     public XRBaseController leftController, rightController;
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
+
+
+    
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(this); // Применяем DontDestroyOnLoad к этому объекту
+    //    DontDestroyOnLoad(leftHand);
+    //    DontDestroyOnLoad(rightHand);
+    //    DontDestroyOnLoad(rlHand);
+    //    DontDestroyOnLoad(rrHand);
+    //    DontDestroyOnLoad(cam);
+    //    DontDestroyOnLoad(rig);
+    //    // Продолжайте добавлять здесь остальные объекты, которые должны оставаться активными
+    //}
 
     void /*Fixed*/Update()
     {
@@ -178,6 +193,8 @@ public class space : Sounds
 
     }
 
+   
+
     private void FixedUpdate()
     {
         if (!_LgrabbingActive && !_RgrabbingActive)
@@ -210,5 +227,16 @@ public class space : Sounds
         Vector2 add = new Vector2(modify.y * -turnspeed * Time.deltaTime, modify.x * -turnspeed * Time.deltaTime);
         var pls = Quaternion.Euler(add);
         rig.transform.rotation = rig.transform.rotation * pls;
+    }
+
+
+    public void Deactivate()
+    {
+        rGrab.DisableDirectAction();
+        rPos.DisableDirectAction();
+        lPos.DisableDirectAction();
+        lGrab.DisableDirectAction();
+        move.DisableDirectAction();
+        turn.DisableDirectAction();
     }
 }

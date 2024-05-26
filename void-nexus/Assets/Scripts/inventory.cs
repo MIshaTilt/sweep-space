@@ -13,6 +13,7 @@ public class inventory : MonoBehaviour
     public int selectedWeapon = 0;
     public Animator rightGlove;
     private float gripValue;
+    //public GameObject weapons;
 
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
@@ -22,6 +23,8 @@ public class inventory : MonoBehaviour
     {
         controller.selectAction.action.started += Change;
         //rightGlove = GetComponent<Animator>();
+        //DontDestroyOnLoad(controller);
+        //DontDestroyOnLoad(weapons);
     }
 
     // Update is called once per frame
