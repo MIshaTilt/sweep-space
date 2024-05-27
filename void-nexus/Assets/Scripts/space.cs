@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.OpenXR.Input;
 
 public class space : Sounds
 {
@@ -14,25 +9,11 @@ public class space : Sounds
     public Transform rlHand;
     public Transform rrHand;
     public Transform cam;
-    public Transform leftPred;
-    public Transform rightPred;
-    public RaycastHit rpredictionHit;
-    public RaycastHit lpredictionHit;
-
-    private Transform rdummy;
-    private Transform ldummy;
-
-    public RaycastHit predictionHit;
 
     public Transform rig;
-    public float X;
 
-    private float _gripStrength;
     private bool _RgrabbingActive = false;
     private bool _LgrabbingActive = false;
-    private bool lcan;
-    private bool rotationOn;
-
 
     public InputActionProperty rGrab;
     public InputActionProperty rPos;
@@ -50,9 +31,6 @@ public class space : Sounds
     public Rigidbody rb;
 
     public LayerMask grab;
-
-    public physicsHands rHand;
-    public physicsHands lHand;
 
     RaycastHit raycastHit;
     RaycastHit eraycastHit;
