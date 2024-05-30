@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4699396743816804037}
   - component: {fileID: 7911541704772782573}
   - component: {fileID: 1694000886178506047}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4864,7 +4864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2889572909556121441}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BulletDecal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4900,7 +4900,7 @@ GameObject:
   - component: {fileID: 4451796855651722506}
   - component: {fileID: 1384453903735502933}
   - component: {fileID: 461073321725677645}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Decal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5042,7 +5042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1317622614198840049}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Olya
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5079,7 +5079,7 @@ GameObject:
   - component: {fileID: 6186651245506057847}
   - component: {fileID: 873687364412978096}
   - component: {fileID: 7382683447698506668}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MetalImpact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9858,7 +9858,7 @@ GameObject:
   - component: {fileID: 7288520566139904272}
   - component: {fileID: 5599559149780229592}
   - component: {fileID: 5815830567031500145}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MetalImpact (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

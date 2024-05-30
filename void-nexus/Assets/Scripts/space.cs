@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -31,6 +32,7 @@ public class space : Sounds
     public Rigidbody rb;
 
     public LayerMask grab;
+    public LayerMask ignore;
 
     RaycastHit raycastHit;
     RaycastHit eraycastHit;
@@ -65,7 +67,7 @@ public class space : Sounds
                 //press event
                 rb.velocity = Vector3.zero;
                 rPredPoint.SetActive(false);
-                Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out raycastHit, 2f);
+                Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out raycastHit, 2f, ~ignore);
                 Debug.DrawRay(rightHand.position, rightHand.forward);
                 PlaySound(0, initialHandPosition, random: false);
                 rightController.SendHapticImpulse(defaultAmplitude, defaultDuration);
@@ -85,7 +87,7 @@ public class space : Sounds
                 //press event
                 rb.velocity = Vector3.zero;
                 lPredPoint.SetActive(false);
-                Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out raycastHit, 2f);
+                Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out raycastHit, 2f, ~ignore);
                 Debug.DrawRay(leftHand.position, leftHand.forward);
                 PlaySound(0, initialHandPosition, random: false);
                 leftController.SendHapticImpulse(defaultAmplitude, defaultDuration);
@@ -104,6 +106,7 @@ public class space : Sounds
             _LgrabbingActive = false;
             //release event
             lPredPoint.SetActive(true);
+            StartCoroutine(ResetCol(rlHand.gameObject));
         }
         else if (_RgrabbingActive)
         {
@@ -116,6 +119,7 @@ public class space : Sounds
             _RgrabbingActive = false;
             //release event
             rPredPoint.SetActive(true);
+            StartCoroutine(ResetCol(rrHand.gameObject));
         }
 
         /*if(Physics.Raycast(cam.position, rPos.action.ReadValue<Vector3>(), out RHit, Vector3.Distance(cam.position, rPos.action.ReadValue<Vector3>())))
@@ -188,5 +192,20 @@ public class space : Sounds
         Vector2 add = new Vector2(modify.y * -turnspeed * Time.deltaTime, modify.x * -turnspeed * Time.deltaTime);
         var pls = Quaternion.Euler(add);
         rig.transform.rotation = rig.transform.rotation * pls;
+    }
+
+    private IEnumerator ResetCol(GameObject go)
+    {
+        Collider col = go.GetComponent<Collider>();
+        col.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        col.enabled = true;
+    }
+
+    public void ColRes()
+    {
+        StartCoroutine(ResetCol(rrHand.gameObject));
+        StartCoroutine(ResetCol(rlHand.gameObject));
+
     }
 }

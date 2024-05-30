@@ -71,7 +71,7 @@ public class EnemyFire : Sounds
                 PlayerHealth target = hit.transform.GetComponent<PlayerHealth>();
                 if (target != null)
                 {
-                    target.TakeDamage(1f);
+                    target.TakeDamage(5f);
                 }
                 PlaySound(0, transform.position, random: true);
             }

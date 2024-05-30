@@ -26,8 +26,8 @@ TagManager:
   - HandPlayer
   - predPoint
   - Obstacles
-  - 
-  - 
+  - Enemy
+  - Ignore Reflection
   - 
   - 
   - 

@@ -13,7 +13,7 @@ public class Target : Sounds
     public GameObject noise;
     public GameObject fire;
 
-    private bool died = false;
+    public bool died = false;
 
     private void Start()
     {
@@ -39,5 +39,10 @@ public class Target : Sounds
         PlaySound(0, transform.position, random: true, destroyed: true);
         noise.SetActive(false);
         fire.SetActive(false);
+    }
+
+    public bool IsDead()
+    {
+        return died;
     }
 }

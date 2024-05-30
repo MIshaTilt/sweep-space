@@ -4,7 +4,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
-using static UnityEditor.FilePathAttribute;
+//using static UnityEditor.FilePathAttribute;
 
 
 
@@ -49,7 +49,7 @@ public class Fly : MonoBehaviour
         
             Vector3 targetLocation = target.position - transform.position;
             float distance = targetLocation.magnitude;
-            rb.AddRelativeForce(Vector3.forward * Mathf.Clamp((distance - 5) / 50, 0f, 1f) * thrust);
+            rb.AddRelativeForce(Vector3.forward * Mathf.Clamp((distance - 2) / 50, 0f, 1f) * thrust);
     }
 
 

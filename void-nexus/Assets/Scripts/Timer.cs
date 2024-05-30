@@ -1,39 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth health;
-    [SerializeField] private float time;
+    [SerializeField] private Slider slider;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameObject explosion;
 
-    private void Start()
+    private bool undocked = false;
+    
+    public void Undock()
     {
-        health = GetComponent<PlayerHealth>();
-        rb = GetComponent<Rigidbody>();
-    }
-
-    private void Update()
-    {
-        time-= Time.deltaTime;
-    }
-
-    private void PushButton()
-    {
-        rb.AddForce(new Vector3(-100, 0, 0), ForceMode.Impulse);
-
-        if (time < 0)
+        if(slider.value == slider.maxValue && !undocked)
         {
-            StartCoroutine(Die());
+            rb.AddForce(new Vector3(0, 0, -1), ForceMode.Impulse);
+            undocked = true;
         }
-    }
-
-    private IEnumerator Die()
-    {
-        yield return new WaitForSeconds(15);
-        explosion.SetActive(true);
-        health.Die();
     }
 }
