@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class physicsHands : MonoBehaviour
+public class physicsHands : Sounds
 {
     [SerializeField] private ActionBasedController controller;
     [SerializeField] private float followSpeed = 30f;
@@ -51,5 +51,8 @@ public class physicsHands : MonoBehaviour
         _body.angularVelocity = axis * (angle * Mathf.Deg2Rad * rotateSpeed);
     }
     
-    
+    public void PlayConnect()
+    {
+        PlaySound(0, transform.position, random: false);
+    }
 }

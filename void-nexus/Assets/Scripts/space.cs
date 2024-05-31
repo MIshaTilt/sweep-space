@@ -49,6 +49,10 @@ public class space : Sounds
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
 
+    public physicsHands rphysics;
+    public physicsHands lphysics;
+
+
     void /*Fixed*/Update()
     {
         col.center = cam.transform.localPosition;
@@ -69,7 +73,8 @@ public class space : Sounds
                 rPredPoint.SetActive(false);
                 Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out raycastHit, 2f, ~ignore);
                 Debug.DrawRay(rightHand.position, rightHand.forward);
-                PlaySound(0, initialHandPosition, random: false);
+                //PlaySound(0, cam.position, random: false, destroyed: true);
+                rphysics.PlayConnect();
                 rightController.SendHapticImpulse(defaultAmplitude, defaultDuration);
             }
 
@@ -89,7 +94,8 @@ public class space : Sounds
                 lPredPoint.SetActive(false);
                 Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out raycastHit, 2f, ~ignore);
                 Debug.DrawRay(leftHand.position, leftHand.forward);
-                PlaySound(0, initialHandPosition, random: false);
+                //PlaySound(0, cam.position, random: false, destroyed: true);
+                lphysics.PlayConnect();
                 leftController.SendHapticImpulse(defaultAmplitude, defaultDuration);
             }
 
