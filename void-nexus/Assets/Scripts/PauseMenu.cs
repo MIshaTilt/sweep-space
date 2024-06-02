@@ -9,14 +9,18 @@ public class PauseMenu : MonoBehaviour
 {
     
     [SerializeField] private InputActionProperty aButton;
+    [SerializeField] private InputActionProperty bButton;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private string mainMenuSceneName = "Menu";
+    [SerializeField] private predicion predl;
+    [SerializeField] private predicion predr;
 
     private bool isPaused = false;
 
     private void OnEnable()
     {
         aButton.action.performed += Pause;
+        bButton.action.performed += ExitToMainMenu;
     }
 
     void Start()
@@ -28,21 +32,28 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause(InputAction.CallbackContext context)
     {
-        if (context.performed) 
+        if (!isPaused)
         {
-            if (!isPaused)
+            Time.timeScale = 0;
+            Debug.Log("Paused");
+            isPaused = true;
+            if (pauseMenu != null)
             {
-                Time.timeScale = 0;
-                pauseMenu.SetActive(true); 
-                Debug.Log("Paused");
-                isPaused = true;
+                pauseMenu.SetActive(true);
+                predl.enabled = false;
+                predr.enabled = false;
             }
-            else
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Debug.Log("Unpaused");
+            isPaused = false;
+            if (pauseMenu != null)
             {
-                Time.timeScale = 1;
-                pauseMenu.SetActive(false); 
-                Debug.Log("Unpaused");
-                isPaused = false;
+                pauseMenu.SetActive(false);
+                predl.enabled = true;
+                predr.enabled = true;
             }
         }
     }
@@ -56,7 +67,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
         
     }
-    public void ExitToMainMenu()
+    public void ExitToMainMenu(InputAction.CallbackContext context)
     {
         Time.timeScale = 1;
         Debug.Log("Loading Main Menu");
