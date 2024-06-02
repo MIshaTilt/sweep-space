@@ -1268,6 +1268,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "exit",
+                    "type": "Button",
+                    "id": "e0f5aaaa-4c07-4701-bbae-161996279b5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1505,11 +1514,22 @@
                 {
                     "name": "",
                     "id": "d743fdbc-3191-41c0-b869-d9cde57f93fc",
-                    "path": "<XRController>{RightHand}/{PrimaryTouch}",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
                     "action": "pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed6e3454-73c0-4bc5-9e5c-783555184f41",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
