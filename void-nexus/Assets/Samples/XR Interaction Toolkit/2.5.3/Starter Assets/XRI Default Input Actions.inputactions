@@ -1259,6 +1259,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "pause",
+                    "type": "Button",
+                    "id": "939e70aa-f9b1-46ae-ac3d-da47fd49234d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1490,6 +1499,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d743fdbc-3191-41c0-b869-d9cde57f93fc",
+                    "path": "<XRController>{RightHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
+                    "action": "pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -2019,6 +2039,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "pause",
+                    "type": "Button",
+                    "id": "917c8ba3-8a60-4d98-ad47-f7c157951e7d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -2415,6 +2444,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0472a45c-11c9-47c4-9697-c187ad84c0a3",
+                    "path": "<XRController>{RightHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
+                    "action": "pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
