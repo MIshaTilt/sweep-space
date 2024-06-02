@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/last graybox done.unity
+    path: Assets/Scenes/MainScene.unity
     guid: aedb5ae1a176d8b40864e672c51c37de
   - enabled: 1
     path: Assets/Scenes/Menu.unity
