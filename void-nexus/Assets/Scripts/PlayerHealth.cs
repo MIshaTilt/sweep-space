@@ -76,7 +76,7 @@ public class PlayerHealth : Sounds
         transform.position = lastCheckpoint;
         // Дополнительно можно сбросить здоровье, перезарядить оружие и т.д.
         health = 100;
-        //space.ColRes();
+        space.ColRes();
     }
 
     public void SetCheckpoint(Vector3 checkpointPosition)

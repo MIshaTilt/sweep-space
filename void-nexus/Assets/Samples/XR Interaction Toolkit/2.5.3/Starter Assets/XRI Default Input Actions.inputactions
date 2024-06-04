@@ -452,6 +452,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "skip",
+                    "type": "Button",
+                    "id": "21c07b59-f8bf-41d1-82f5-2923635411f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -694,6 +703,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
                     "action": "heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a612159f-7f24-420c-b20d-96727521f8cd",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -14,7 +14,7 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        if (!audioSource.isPlaying && !audioSource.loop && audioSource.clip != null)
+        if (isPlayerActive && !audioSource.isPlaying && !audioSource.loop && audioSource.clip != null)
         {
             PlayNextTrack();
         }

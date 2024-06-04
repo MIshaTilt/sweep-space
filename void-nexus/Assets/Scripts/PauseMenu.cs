@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+//using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -69,9 +69,12 @@ public class PauseMenu : MonoBehaviour
     }
     public void ExitToMainMenu(InputAction.CallbackContext context)
     {
-        Time.timeScale = 1;
-        Debug.Log("Loading Main Menu");
-        SceneManager.LoadScene(mainMenuSceneName); 
+        if(isPaused)
+        {
+            Time.timeScale = 1;
+            Debug.Log("Loading Main Menu");
+            SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
 
 }

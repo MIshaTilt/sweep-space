@@ -52,6 +52,7 @@ public class space : Sounds
     public physicsHands rphysics;
     public physicsHands lphysics;
 
+    public bool rotationOn;
 
     void /*Fixed*/Update()
     {
@@ -175,29 +176,37 @@ public class space : Sounds
 
         //Debug.Log(turn.action.ReadValue<Vector2>());
         var modify = turn.action.ReadValue<Vector2>();
-        //Debug.Log(modify);
-        /*if (Mathf.Abs(modify.x) + Mathf.Abs(modify.y) >= 1f && !rotationOn)
+        if (PlayerPrefs.GetInt("Movement")==0)
         {
-            rotationOn = true;
-            if(Mathf.Abs(modify.x) >= Mathf.Abs(modify.y))
-            {
-                modify.y = 0f;
-            }
-            else
-            {
-                modify.x = 0f;
-            }
-            Vector2 add = new Vector2(modify.y * -turnspeed, modify.x * -turnspeed);
+            Vector2 add = new Vector2(modify.y * -turnspeed * Time.deltaTime, modify.x * -turnspeed * Time.deltaTime);
             var pls = Quaternion.Euler(add);
-            rig.transform.rotation = rig.transform.rotation * pls; ;
+            rig.transform.rotation = rig.transform.rotation * pls;
         }
-        else if(modify== Vector2.zero && rotationOn)
+        else
         {
-            rotationOn = false;
-        }*/
-        Vector2 add = new Vector2(modify.y * -turnspeed * Time.deltaTime, modify.x * -turnspeed * Time.deltaTime);
-        var pls = Quaternion.Euler(add);
-        rig.transform.rotation = rig.transform.rotation * pls;
+            if (Mathf.Abs(modify.x) + Mathf.Abs(modify.y) >= 1f && !rotationOn)
+            {
+                rotationOn = true;
+                if (Mathf.Abs(modify.x) >= Mathf.Abs(modify.y))
+                {
+                    modify.y = 0f;
+                }
+                else
+                {
+                    modify.x = 0f;
+                }
+                Vector2 add = new Vector2(modify.y * -turnspeed, modify.x * -turnspeed);
+                var pls = Quaternion.Euler(add);
+                rig.transform.rotation = rig.transform.rotation * pls; ;
+            }
+            else if (modify == Vector2.zero && rotationOn)
+            {
+                rotationOn = false;
+            }
+        }
+        //Debug.Log(modify);
+        
+        
     }
 
     private IEnumerator ResetCol(GameObject go)

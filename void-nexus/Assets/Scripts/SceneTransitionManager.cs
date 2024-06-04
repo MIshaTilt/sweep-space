@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.XR.CoreUtils;
+using UnityEngine.UI;
+using TMPro;
 
 public class SceneTransitionManager : MonoBehaviour
 {
     public FadeScreen fadeScreen;
-
+    public TMP_Dropdown dropdown;
 
     public void GoToScene(int SceneIndex)
     {
@@ -41,5 +43,17 @@ public class SceneTransitionManager : MonoBehaviour
         }
 
         asyncOperation.allowSceneActivation = true;
+    }
+
+    private void Update()
+    {
+        if(dropdown.value == 1)
+        {
+            PlayerPrefs.SetInt("Movement", 1);
+        }
+        if (dropdown.value == 0)
+        {
+            PlayerPrefs.SetInt("Movement", 0);
+        }
     }
 }

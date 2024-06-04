@@ -61,7 +61,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource Theme, Click, MusicVolume;
     public Slider volumeSlider;
 
-    private void Awake()
+    /*private void Awake()
     {
         if (Instance == null)
         {
@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 
     private void Start()
     {
