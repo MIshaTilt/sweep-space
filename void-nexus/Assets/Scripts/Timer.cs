@@ -15,14 +15,14 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        rb.isKinematic = false;
+        rb.isKinematic = true;
     }
 
     public void Undock()
     {
         if(slider.value == slider.maxValue && !undocked)
         {   
-            rb.isKinematic=true;
+            rb.isKinematic=false;
             rb.AddForce(new Vector3(0, 0, -1), ForceMode.Impulse);
             StartCoroutine(end());
             undocked = true;

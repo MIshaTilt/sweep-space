@@ -340,7 +340,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 88449572270845501, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_text
-      value: "\u0420\u0415\u0416\u0418\u041C \u041F\u041E\u0412\u041E\u0420\u041E\u0422\u0410"
+      value: TURN TYPE
       objectReference: {fileID: 0}
     - target: {fileID: 88449572270845501, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_fontSize
@@ -376,11 +376,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1501494061706083255, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 74.5
+      value: 20.7
       objectReference: {fileID: 0}
     - target: {fileID: 1501494061706083255, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1564700994024561459, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -388,7 +388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601814103227483611, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_text
-      value: "\u0417\u0412\u0423\u041A"
+      value: VOLUME
       objectReference: {fileID: 0}
     - target: {fileID: 1601814103227483611, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_fontSize
@@ -420,11 +420,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441421477714580068, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
-      value: "\u041F\u041B\u0410\u0412\u041D\u042B\u0419"
+      value: CONTINIOUS
       objectReference: {fileID: 0}
     - target: {fileID: 3441421477714580068, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_Options.m_Options.Array.data[1].m_Text
-      value: "\u0420\u0415\u0417\u041A\u0418\u0419"
+      value: SNAP
       objectReference: {fileID: 0}
     - target: {fileID: 3441421477714580068, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
@@ -484,7 +484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705134530272684849, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_text
-      value: "\u0412\u042B\u0425\u041E\u0414"
+      value: EXIT
       objectReference: {fileID: 0}
     - target: {fileID: 6345942674727516143, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_Name
@@ -649,6 +649,10 @@ PrefabInstance:
     - target: {fileID: 7137258334413978533, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7713229432063639948, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
+      propertyPath: m_text
+      value: SETTINGS
       objectReference: {fileID: 0}
     - target: {fileID: 7713229432063639948, guid: 0a13432b468200f44ad73dbf81524504, type: 3}
       propertyPath: m_fontAsset
@@ -1263,7 +1267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u042B\u0425\u041E\u0414"
+  m_text: EXIT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c516d40dcadba604dbddf1ae78df2676, type: 2}
   m_sharedMaterial: {fileID: 3709560107761757191, guid: c516d40dcadba604dbddf1ae78df2676, type: 2}
@@ -1830,7 +1834,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u0410\u0421\u0422\u0420\u041E\u0419\u041A\u0418"
+  m_text: SETTINGS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c516d40dcadba604dbddf1ae78df2676, type: 2}
   m_sharedMaterial: {fileID: 3709560107761757191, guid: c516d40dcadba604dbddf1ae78df2676, type: 2}
@@ -3413,6 +3417,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6308353757102812633}
     m_Modifications:
+    - target: {fileID: 681923318661200564, guid: 72f2efeb0e5a9c34f979ef73790a3a10, type: 3}
+      propertyPath: m_text
+      value: PLAY
+      objectReference: {fileID: 0}
     - target: {fileID: 4758802092562440213, guid: 72f2efeb0e5a9c34f979ef73790a3a10, type: 3}
       propertyPath: m_Name
       value: Play
