@@ -4,6 +4,7 @@ using ChairControl.ChairWork;
 using ChairControl.ChairWork.Options;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 #endregion
 
@@ -25,7 +26,6 @@ namespace Futurift
 
         private float tilt; // Наклон
         private float roll; // Крен
-
 
         void Start()
         {
@@ -58,8 +58,11 @@ namespace Futurift
             //tilt = Mathf.Clamp(acceleration.y, -1f, 1f); // Ограничиваем наклон от -1 до 1
             //roll = Mathf.Clamp(acceleration.x, -1f, 1f); // Ограничиваем крен от -1 до 1
 
-            tilt = acceleration.z * tiltSensitivity;
-            roll = acceleration.x * rollSensitivity;
+            Vector3 localVelocity = transform.InverseTransformDirection(acceleration);
+
+
+            tilt = localVelocity.z * tiltSensitivity + transform.rotation.z;
+            roll = localVelocity.x * rollSensitivity + transform.rotation.x;
 
             //var euler = transform.eulerAngles;
             _futuRiftController.Pitch = -(tilt > 180 ? tilt - 360 : tilt);

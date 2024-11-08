@@ -35,7 +35,7 @@ public class physicsHead : MonoBehaviour
     {
         PhysicsMove();
 
-        Gizmos.DrawWireSphere(positionOffset, 1);
+        //Gizmos.DrawWireSphere(positionOffset, 1);
     }
 
     private void PhysicsMove()
