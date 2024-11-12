@@ -27,6 +27,8 @@ namespace Futurift
         private float tilt; // Наклон
         private float roll; // Крен
 
+        public Transform rig;
+
         void Start()
         {
             // Сохраняем начальную позицию игрока
@@ -60,12 +62,17 @@ namespace Futurift
 
             Vector3 localVelocity = transform.InverseTransformDirection(acceleration);
 
+            Vector3 newAcc = new Vector3(acceleration.x,acceleration.y,acceleration.z);
+
+            Quaternion final = rig.transform.rotation;
+
+            Vector3 ans = final * newAcc;
 
             tilt = localVelocity.z * tiltSensitivity + transform.rotation.z;
             roll = localVelocity.x * rollSensitivity + transform.rotation.x;
 
             //var euler = transform.eulerAngles;
-            _futuRiftController.Pitch = -(tilt > 180 ? tilt - 360 : tilt);
+            _futuRiftController.Pitch = (tilt > 180 ? tilt - 360 : tilt);
             _futuRiftController.Roll = -(roll > 180 ? roll - 360 : roll);
             Debug.Log($"Pitch: {RoundToDecimalPlaces(_futuRiftController.Pitch, 2)}, Roll: {RoundToDecimalPlaces(_futuRiftController.Roll, 2)},");
         }
