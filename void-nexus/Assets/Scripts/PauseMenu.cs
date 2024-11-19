@@ -28,6 +28,10 @@ public class PauseMenu : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        Debug.Log(isPaused);
+    }
 
 
     private void Pause(InputAction.CallbackContext context)
@@ -69,7 +73,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void ExitToMainMenu(InputAction.CallbackContext context)
     {
-        if(isPaused)
+        if(isPaused == true && Time.timeScale == 0f)
         {
             Time.timeScale = 1;
             Debug.Log("Loading Main Menu");

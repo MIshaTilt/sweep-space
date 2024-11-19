@@ -74,7 +74,7 @@ namespace Futurift
             //var euler = transform.eulerAngles;
             _futuRiftController.Pitch = (tilt > 180 ? tilt - 360 : tilt);
             _futuRiftController.Roll = -(roll > 180 ? roll - 360 : roll);
-            Debug.Log($"Pitch: {RoundToDecimalPlaces(_futuRiftController.Pitch, 2)}, Roll: {RoundToDecimalPlaces(_futuRiftController.Roll, 2)},");
+            //Debug.Log($"Pitch: {RoundToDecimalPlaces(_futuRiftController.Pitch, 2)}, Roll: {RoundToDecimalPlaces(_futuRiftController.Roll, 2)},");
         }
 
         public float RoundToDecimalPlaces(float value, int decimalPlaces)

@@ -54,6 +54,11 @@ public class space : Sounds
 
     public bool rotationOn;
 
+    public inventory inventoryR;
+    public inventoryL inventoryL;
+    public FPSFireManager fpsFireManager;
+    public grenadeLaunceher grenadeLaunceher;
+
     void /*Fixed*/Update()
     {
         col.center = cam.transform.localPosition;
@@ -221,6 +226,13 @@ public class space : Sounds
     {
         StartCoroutine(ResetCol(rrHand.gameObject));
         StartCoroutine(ResetCol(rlHand.gameObject));
-
+        inventoryL.selectedItem = 0;
+        inventoryL.leftGlove.SetBool("GrabbingBattery", false);
+        inventoryL.leftGlove.SetBool("GrabbingMed", false);
+        inventoryR.selectedWeapon = 0;
+        inventoryR.rightGlove.SetBool("GrabbingPistol", false);
+        inventoryR.rightGlove.SetBool("GrabbingGun", false);
+        fpsFireManager.currentAmmo = fpsFireManager.maxAmmo;
+        grenadeLaunceher.currentAmmo = grenadeLaunceher.maxAmmo;
     }
 }

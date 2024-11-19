@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
         {   
             rb.isKinematic=false;
             rb.AddForce(new Vector3(0, 0, -1), ForceMode.Impulse);
-            StartCoroutine(end());
+            //StartCoroutine(end());
             undocked = true;
         }
     }
