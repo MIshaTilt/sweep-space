@@ -13,8 +13,8 @@ public class space : Sounds
 
     public Transform rig;
 
-    private bool _RgrabbingActive = false;
-    private bool _LgrabbingActive = false;
+    public bool _RgrabbingActive = false;
+    public bool _LgrabbingActive = false;
 
     public InputActionProperty rGrab;
     public InputActionProperty rPos;
