@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isPaused);
+        //Debug.Log(isPaused);
     }
 
 

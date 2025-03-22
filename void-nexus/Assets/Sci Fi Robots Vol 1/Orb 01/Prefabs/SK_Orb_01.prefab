@@ -989,6 +989,7 @@ MonoBehaviour:
   animator: {fileID: 95757004786727878}
   noise: {fileID: 5417874088305140780}
   fire: {fileID: 7887910985836819543}
+  died: 0
 --- !u!82 &4945042822410461877
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1502,6 +1503,9 @@ MonoBehaviour:
   ImpactEffect: {fileID: 124018, guid: 1f389bb139e76154582cf3c5e4f9214b, type: 3}
   cooldown: 1
   gunTip: {fileID: 4986636890916524}
+  playerHitbox:
+    serializedVersion: 2
+    m_Bits: 262144
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: 42145b3d1792e5c46aae027fbbaa502e, type: 3}
   maxQueryDistance: 300
   tracerSpeed: 3

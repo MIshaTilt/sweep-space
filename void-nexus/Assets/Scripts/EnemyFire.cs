@@ -11,6 +11,8 @@ public class EnemyFire : Sounds
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private Transform gunTip;
     private bool alreadyAttacked = false;
+    [SerializeField] private LayerMask playerHitbox;
+
 
     public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
     public float RotationSpeed => 72.0F;
@@ -63,15 +65,24 @@ public class EnemyFire : Sounds
         if(Vector3.Distance(transform.position, player.transform.position) < 7f)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 7f))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 7f, playerHitbox))
             {
                 Fire();
                 var impactEffectIstance = Instantiate(ImpactEffect, transform.position, transform.rotation) as GameObject;
                 Destroy(impactEffectIstance, 4);
-                PlayerHealth target = hit.transform.GetComponent<PlayerHealth>();
-                if (target != null)
+                //PlayerHealth target = hit.transform.GetComponent<PlayerHealth>();
+                //if (target != null)
+                //{
+                //    target.TakeDamage(5f);
+                //}
+                TakeHaptic hapticTarget = hit.transform.GetComponent<TakeHaptic>();
+                if (hapticTarget != null)
                 {
-                    target.TakeDamage(5f);
+                    hapticTarget.TakeShot();
+                }
+                else
+                {
+                    Debug.Log(hit.transform.gameObject.name);
                 }
                 PlaySound(0, transform.position, random: true);
             }

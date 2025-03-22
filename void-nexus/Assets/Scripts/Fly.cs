@@ -27,7 +27,7 @@ public class Fly : MonoBehaviour
     private void Start()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
-        target = GameObject.FindGameObjectWithTag("camera").transform;
+        target = GameObject.FindGameObjectWithTag("torso").transform;
     }
 
     private void FixedUpdate()

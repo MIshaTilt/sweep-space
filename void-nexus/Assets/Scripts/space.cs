@@ -111,7 +111,7 @@ public class space : Sounds
         {
             Vector3 currentHandPosition = lPos.action.ReadValue<Vector3>();
             lhandMovement = currentHandPosition - lastHandPosition;
-            Debug.Log(lhandMovement);
+            //Debug.Log(lhandMovement);
             Quaternion final = rig.transform.rotation;
             Vector3 ans = final * lhandMovement;
             rb.AddForce(ans * -1000f, ForceMode.Impulse);
@@ -124,7 +124,7 @@ public class space : Sounds
         {
             Vector3 currentHandPosition = rPos.action.ReadValue<Vector3>();
             rhandMovement = currentHandPosition - lastHandPosition;
-            Debug.Log(rhandMovement);
+            //Debug.Log(rhandMovement);
             Quaternion final = rig.transform.rotation;
             Vector3 ans = final * rhandMovement;
             rb.AddForce(ans * -1000f, ForceMode.Impulse);

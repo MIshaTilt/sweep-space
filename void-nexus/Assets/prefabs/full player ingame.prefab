@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e173ea8557160094a8fa11cb337160f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds: []
+  randSound: []
   controller: {fileID: 7229046280956968986}
   followSpeed: 30
   rotateSpeed: 100
@@ -12972,6 +12974,8 @@ MonoBehaviour:
   rrHand: {fileID: 4767707706446578795}
   cam: {fileID: 4284445543295456775}
   rig: {fileID: 351255626122392741}
+  _RgrabbingActive: 0
+  _LgrabbingActive: 0
   rGrab:
     m_UseReference: 1
     m_Action:
@@ -13061,6 +13065,13 @@ MonoBehaviour:
   rightController: {fileID: 3662744523484476907}
   defaultAmplitude: 0.8
   defaultDuration: 0.01
+  rphysics: {fileID: 0}
+  lphysics: {fileID: 0}
+  rotationOn: 0
+  inventoryR: {fileID: 0}
+  inventoryL: {fileID: 0}
+  fpsFireManager: {fileID: 0}
+  grenadeLaunceher: {fileID: 0}
 --- !u!82 &3266683427841364908
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13964,7 +13975,7 @@ GameObject:
   - component: {fileID: 7690022029706054005}
   - component: {fileID: 615698849875555604}
   - component: {fileID: 3058486284585622600}
-  m_Layer: 3
+  m_Layer: 19
   m_Name: XR Origin (XR Rig)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -23938,6 +23949,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e173ea8557160094a8fa11cb337160f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds: []
+  randSound: []
   controller: {fileID: 3662744523484476907}
   followSpeed: 30
   rotateSpeed: 100
