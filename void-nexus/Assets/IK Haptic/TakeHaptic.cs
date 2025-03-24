@@ -21,7 +21,6 @@ public class TakeHaptic : MonoBehaviour
 
     public void TakeShot()
     {
-        hapticHandler.PlayHaptic(eventName);
-        Debug.Log($"Got shot in {eventName}");
+        hapticHandler.PlayHaptic();
     }
 }

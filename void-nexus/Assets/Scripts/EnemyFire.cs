@@ -8,10 +8,12 @@ public class EnemyFire : Sounds
     [Header("AI settings")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject ImpactEffect;
+    [SerializeField] private GameObject ImpactOnPlayer;
     [SerializeField] private float cooldown = 1f;
     [SerializeField] private Transform gunTip;
     private bool alreadyAttacked = false;
     [SerializeField] private LayerMask playerHitbox;
+    [SerializeField] private float spreadAmount = 0.1f;
 
 
     public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
@@ -59,23 +61,44 @@ public class EnemyFire : Sounds
     {
         alreadyAttacked = false;
     }
-
     private void Shooting()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < 7f)
+        if (Vector3.Distance(transform.position, player.transform.position) < 7f)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 7f, playerHitbox))
+
+            // Добавляем случайный разброс к направлению выстрела
+            Vector3 spread = new Vector3(
+                Random.Range(-spreadAmount, spreadAmount),
+                Random.Range(-spreadAmount, spreadAmount),
+                0
+            );
+
+            // Создаем новое направление с учетом разброса
+            Vector3 shootingDirection = transform.forward + spread;
+            shootingDirection.Normalize(); // Важно нормализовать вектор
+
+            if (Physics.Raycast(
+                transform.position,
+                shootingDirection, // Используем направление с разбросом
+                out hit,
+                7f,
+                ~playerHitbox))
             {
                 Fire();
                 var impactEffectIstance = Instantiate(ImpactEffect, transform.position, transform.rotation) as GameObject;
                 Destroy(impactEffectIstance, 4);
-                //PlayerHealth target = hit.transform.GetComponent<PlayerHealth>();
-                //if (target != null)
-                //{
-                //    target.TakeDamage(5f);
-                //}
-                TakeHaptic hapticTarget = hit.transform.GetComponent<TakeHaptic>();
+
+                var impactOnPlayer = Instantiate(
+                ImpactOnPlayer,
+                hit.point, // Лучше использовать точку попадания
+                Quaternion.LookRotation(hit.normal) // Правильный поворот эффекта
+            ) as GameObject;
+                Destroy(impactOnPlayer, 4);
+
+                GameObject collidedObject = hit.collider.gameObject;
+
+                TakeHaptic hapticTarget = collidedObject.GetComponent<TakeHaptic>();
                 if (hapticTarget != null)
                 {
                     hapticTarget.TakeShot();

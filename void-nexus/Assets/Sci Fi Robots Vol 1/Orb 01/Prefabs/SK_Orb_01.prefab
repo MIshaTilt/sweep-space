@@ -956,7 +956,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rotationalDamp: 100
+  rotationalDamp: 50
   detectionDistance: 20
   rayCastOffset: 0.6
   thrust: 8
@@ -1501,11 +1501,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 64b19a4efe113fb44b5c5ca2963dbc38, type: 3}
   player: {fileID: 0}
   ImpactEffect: {fileID: 124018, guid: 1f389bb139e76154582cf3c5e4f9214b, type: 3}
+  ImpactOnPlayer: {fileID: 178032, guid: dcde18a8b78f3a441808939d267cec5f, type: 3}
   cooldown: 1
   gunTip: {fileID: 4986636890916524}
   playerHitbox:
     serializedVersion: 2
-    m_Bits: 262144
+    m_Bits: 786431
+  spreadAmount: 0.1
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: 42145b3d1792e5c46aae027fbbaa502e, type: 3}
   maxQueryDistance: 300
   tracerSpeed: 3

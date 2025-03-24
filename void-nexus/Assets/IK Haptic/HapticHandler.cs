@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HapticHandler : MonoBehaviour
 {
+    [SerializeField] private string eventName;
+    [SerializeField] private PlayerHealth health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +19,9 @@ public class HapticHandler : MonoBehaviour
         
     }
 
-    public void PlayHaptic(string eventName)
+    public void PlayHaptic()
     {
-        Debug.Log(eventName);
+        Debug.Log("esfdcw");
+        health.TakeDamage(3f);
     }
 }
