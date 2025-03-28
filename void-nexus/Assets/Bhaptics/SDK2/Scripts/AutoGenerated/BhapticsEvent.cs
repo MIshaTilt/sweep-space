@@ -17,6 +17,34 @@ namespace Bhaptics.SDK2
     public class BhapticsEvent
     {
         
-        public const string JIJIP = "jijip";
+        public const string SIDE_BOTTOM_SHOT = "side_bottom_shot";
+        
+        public const string LEFT_TOP_FRONT_SHOT = "left_top_front_shot";
+        
+        public const string RIGHT_TOP_FRONT_SHOT = "right_top_front_shot";
+        
+        public const string LEFT_BOTTOM_FRONT_SHOT = "left_bottom_front_shot";
+        
+        public const string RIGHT_BOTTOM_FRONT_SHOT = "right_bottom_front_shot";
+        
+        public const string MID_LEFT_TOP_SHOT = "mid_left_top_shot";
+        
+        public const string MID_RIGHT_TOP_SHOT = "mid_right_top_shot";
+        
+        public const string MID_LEFT_BOTTOM_SHOT = "mid_left_bottom_shot";
+        
+        public const string MID_RIGHT_BOTTOM_SHOT = "mid_right_bottom_shot";
+        
+        public const string SIDE_UPPER_SHOT = "side_upper_shot";
+        
+        public const string R_HANDSHOT = "r_handshot";
+        
+        public const string L_HANDSHOT = "l_handshot";
+        
+        public const string MID_HEADSHOT = "mid_headshot";
+        
+        public const string EXPLOSION_HIT = "explosion_hit";
+        
+        public const string DOWN_SHOT = "down_shot";
     }
 }

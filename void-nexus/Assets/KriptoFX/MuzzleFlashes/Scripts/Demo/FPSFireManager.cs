@@ -156,6 +156,14 @@ public class FPSFireManager : Sounds
                     Target target = hit.transform.GetComponent<Target>();
                     target.TakeDamage(50f);
                 }
+                else if(hit.collider.gameObject.tag == "hitbox")
+                {
+                    TakeHaptic hapticTarget = hit.collider.gameObject.GetComponent<TakeHaptic>();
+                    if (hapticTarget != null)
+                    {
+                        hapticTarget.TakeShot();
+                    }
+                }
                 controller.SendHapticImpulse(defaultAmplitude, defaultDuration);
                 currentAmmo--;
                 myNewBar.value -= 1 / maxAmmo;

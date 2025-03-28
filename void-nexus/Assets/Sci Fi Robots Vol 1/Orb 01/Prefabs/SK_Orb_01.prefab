@@ -1507,7 +1507,7 @@ MonoBehaviour:
   playerHitbox:
     serializedVersion: 2
     m_Bits: 786431
-  spreadAmount: 0.1
+  spreadAmount: 0.2
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: 42145b3d1792e5c46aae027fbbaa502e, type: 3}
   maxQueryDistance: 300
   tracerSpeed: 3

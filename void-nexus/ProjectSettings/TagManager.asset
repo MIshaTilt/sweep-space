@@ -12,6 +12,7 @@ TagManager:
   - grenadeLauncher
   - camera
   - torso
+  - hitbox
   layers:
   - Default
   - TransparentFX
