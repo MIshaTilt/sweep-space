@@ -31,6 +31,7 @@ public class FPSFireManager : Sounds
     public XRBaseController controller;
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
+    [SerializeField] private TutorialManager tutorialManager;
 
     public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
     public float RotationSpeed => 72.0F;
@@ -76,6 +77,7 @@ public class FPSFireManager : Sounds
                 isReloading = false;
                 myNewBar.value = 0f;
                 currentAmmo = maxAmmo;
+                tutorialManager.CompleteStepExternally(6);
                 return;
             }
         }
@@ -168,6 +170,7 @@ public class FPSFireManager : Sounds
                 currentAmmo--;
                 myNewBar.value -= 1 / maxAmmo;
                 PlaySound(0,transform.position, random: true);
+                tutorialManager.CompleteStepExternally(3);
             }
 
         }

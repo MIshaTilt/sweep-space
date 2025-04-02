@@ -13,14 +13,22 @@ public class TutorialManager : MonoBehaviour
         public bool requiresHold; // Нужно ли удерживать действие
         public int[] requiredPresses; // Количество нажатий для каждого действия
         public bool allowExternalCompletion; // Разрешить внешний вызов NextStep()
+        public bool useVector2Input; // Использовать ли Vector2 вместо float
+        public float joystickThreshold = 0.5f; // Порог для джойстика
     }
 
     public TutorialStep[] steps;
-    private int currentStep = 0;
+    public int currentStep = 0;
     private int[] actionPressCounts;
 
     void Start()
     {
+        foreach (var step in steps)
+        {
+            if (step.uiElement)
+                step.uiElement.SetActive(false);
+        }
+
         if (steps.Length > 0)
         {
             actionPressCounts = new int[steps[currentStep].requiredActions.Length];
@@ -36,7 +44,15 @@ public class TutorialManager : MonoBehaviour
 
         for (int i = 0; i < steps[currentStep].requiredActions.Length; i++)
         {
-            if (steps[currentStep].requiresHold)
+            if (steps[currentStep].useVector2Input)
+            {
+                Vector2 input = steps[currentStep].requiredActions[i].action.ReadValue<Vector2>();
+                if (input.magnitude < steps[currentStep].joystickThreshold)
+                {
+                    stepCompleted = false;
+                }
+            }
+            else if (steps[currentStep].requiresHold)
             {
                 if (steps[currentStep].requiredActions[i].action.ReadValue<float>() <= 0)
                 {
@@ -64,12 +80,6 @@ public class TutorialManager : MonoBehaviour
 
     void ShowStep(int stepIndex)
     {
-        // Выключаем все UI элементы
-        foreach (var step in steps)
-        {
-            if (step.uiElement)
-                step.uiElement.SetActive(false);
-        }
 
         // Включаем текущий UI элемент
         if (steps[stepIndex].uiElement)
@@ -90,9 +100,9 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    public void CompleteStepExternally()
+    public void CompleteStepExternally(int stepIndex)
     {
-        if (currentStep < steps.Length && steps[currentStep].allowExternalCompletion)
+        if (currentStep < steps.Length && steps[currentStep].allowExternalCompletion && currentStep == stepIndex)
         {
             NextStep();
         }

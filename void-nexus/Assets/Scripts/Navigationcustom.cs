@@ -13,7 +13,8 @@ public class Navigationcustom : MonoBehaviour
     [SerializeField] private GameObject navigation;
     [SerializeField] private GameObject hint;
     [SerializeField] private GameObject heart;
-    [SerializeField] private bool navActive = true;
+    [SerializeField] private bool navActive = false;
+    [SerializeField] private TutorialManager tutorialManager;
 
 
     public float reloadTime = 1f;
@@ -48,6 +49,7 @@ public class Navigationcustom : MonoBehaviour
                     hint.SetActive(true);
                     heart.SetActive(true);
                     navActive = false;
+                    tutorialManager.CompleteStepExternally(7);
                 }
                 else
                 {

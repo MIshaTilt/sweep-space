@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause(InputAction.CallbackContext context)
     {
-        if (!isPaused)
+        if (!isPaused && SceneManager.GetActiveScene().name != "Menu")
         {
             Time.timeScale = 0;
             Debug.Log("Paused");

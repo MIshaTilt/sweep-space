@@ -12,6 +12,7 @@ public class inventoryL : MonoBehaviour
     public ActionBasedController controllerL;
     public int selectedItem = 0;
     public Animator leftGlove;
+    [SerializeField] private InvCount invCount;
 
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
@@ -58,6 +59,7 @@ public class inventoryL : MonoBehaviour
 
         }
         controllerL.SendHapticImpulse(defaultAmplitude, defaultDuration);
+        invCount.AddCount();
 
     }
 
@@ -78,7 +80,7 @@ public class inventoryL : MonoBehaviour
                 {
                     weapon.gameObject.SetActive(true);
 
-
+                    
 
                     //if (selectedWeapon == 1)
                     //    rightGlove.SetBool("GrabbingPistol", true);
@@ -105,7 +107,7 @@ public class inventoryL : MonoBehaviour
                 }
                 else
                     weapon.gameObject.SetActive(false);
-                i++;
+            i++;
             }
         }
 }

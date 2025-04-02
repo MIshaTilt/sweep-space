@@ -148,7 +148,7 @@ MonoBehaviour:
   controller: {fileID: 7229046280956968986}
   followSpeed: 30
   rotateSpeed: 100
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: -0.03, y: -0.03, z: -0.11}
   rotationOffset: {x: 180, y: 0, z: 90}
   palm: {fileID: 4659158491699426668}
   reachDistance: 0.1
@@ -1124,6 +1124,7 @@ MonoBehaviour:
   controller: {fileID: 3662744523484476907}
   defaultAmplitude: 0.8
   defaultDuration: 0.05
+  tutorialManager: {fileID: 0}
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: 42145b3d1792e5c46aae027fbbaa502e, type: 3}
   maxQueryDistance: 300
   tracerSpeed: 10
@@ -13072,6 +13073,7 @@ MonoBehaviour:
   inventoryL: {fileID: 0}
   fpsFireManager: {fileID: 0}
   grenadeLaunceher: {fileID: 0}
+  tutorialManager: {fileID: 0}
 --- !u!82 &3266683427841364908
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13504,6 +13506,7 @@ MonoBehaviour:
   controllerL: {fileID: 7229046280956968986}
   selectedItem: 0
   leftGlove: {fileID: 2876969170043297177}
+  invCount: {fileID: 0}
   defaultAmplitude: 0.8
   defaultDuration: 0.01
 --- !u!1 &3525033313037454259
@@ -14102,6 +14105,7 @@ MonoBehaviour:
   maxHealth: 100
   hpDisp: {fileID: 1713322808747365435}
   space: {fileID: 0}
+  tutorialManager: {fileID: 0}
   myNewBar: {fileID: 5016874562690997479}
   maxAmmo: 10
   currentAmmo: 0
@@ -21694,6 +21698,8 @@ MonoBehaviour:
   range: 15
   ammo: {fileID: 7309769992338268263}
   myNewBar: {fileID: 843290699119415602}
+  tutorialManager: {fileID: 0}
+  playerHealth: {fileID: 0}
   maxAmmo: 1000
   currentAmmo: 0
   reloadTime: 3
@@ -23954,7 +23960,7 @@ MonoBehaviour:
   controller: {fileID: 3662744523484476907}
   followSpeed: 30
   rotateSpeed: 100
-  positionOffset: {x: 0, y: 0, z: 0}
+  positionOffset: {x: 0.03, y: -0.03, z: -0.11}
   rotationOffset: {x: 180, y: 0, z: -90}
   palm: {fileID: 2261326070768528613}
   reachDistance: 0.1
@@ -24616,5 +24622,6 @@ MonoBehaviour:
   controller: {fileID: 3662744523484476907}
   selectedWeapon: 0
   rightGlove: {fileID: 1944301379071353410}
+  invCount: {fileID: 0}
   defaultAmplitude: 0.8
   defaultDuration: 0.01

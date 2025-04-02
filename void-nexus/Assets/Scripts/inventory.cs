@@ -12,7 +12,7 @@ public class inventory : MonoBehaviour
     public ActionBasedController controller;
     public int selectedWeapon = 0;
     public Animator rightGlove;
-    private float gripValue;
+    [SerializeField] private InvCount invCount;
 
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
@@ -53,6 +53,8 @@ public class inventory : MonoBehaviour
 
         }
         controller.SendHapticImpulse(defaultAmplitude, defaultDuration);
+        invCount.AddCount();
+
         /*if (selectedWeapon == 1)
         {
             rightGlove.SetBool("grabbingpistol", true);

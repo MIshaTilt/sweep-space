@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class space : Sounds
@@ -58,6 +61,7 @@ public class space : Sounds
     public inventoryL inventoryL;
     public FPSFireManager fpsFireManager;
     public grenadeLaunceher grenadeLaunceher;
+    [SerializeField] private TutorialManager tutorialManager;
 
     void /*Fixed*/Update()
     {
@@ -82,6 +86,7 @@ public class space : Sounds
                 //PlaySound(0, cam.position, random: false, destroyed: true);
                 rphysics.PlayConnect();
                 rightController.SendHapticImpulse(defaultAmplitude, defaultDuration);
+                tutorialManager.CompleteStepExternally(8);
             }
 
 
@@ -103,6 +108,7 @@ public class space : Sounds
                 //PlaySound(0, cam.position, random: false, destroyed: true);
                 lphysics.PlayConnect();
                 leftController.SendHapticImpulse(defaultAmplitude, defaultDuration);
+                tutorialManager.CompleteStepExternally(8);
             }
 
 
@@ -118,7 +124,11 @@ public class space : Sounds
             _LgrabbingActive = false;
             //release event
             lPredPoint.SetActive(true);
-            StartCoroutine(ResetCol(rlHand.gameObject));
+            StartCoroutine(ToggleCollidersCoroutine(rlHand.gameObject));
+            if ((ans * -5000f).magnitude > 1f)
+            {
+                tutorialManager.CompleteStepExternally(10);
+            }
         }
         else if (_RgrabbingActive)
         {
@@ -131,7 +141,11 @@ public class space : Sounds
             _RgrabbingActive = false;
             //release event
             rPredPoint.SetActive(true);
-            StartCoroutine(ResetCol(rrHand.gameObject));
+            StartCoroutine(ToggleCollidersCoroutine(rrHand.gameObject));
+            if((ans * -5000f).magnitude > 1f)
+            {
+                tutorialManager.CompleteStepExternally(10);
+            }
         }
 
         /*if(Physics.Raycast(cam.position, rPos.action.ReadValue<Vector3>(), out RHit, Vector3.Distance(cam.position, rPos.action.ReadValue<Vector3>())))
@@ -151,6 +165,7 @@ public class space : Sounds
             rrHand.transform.rotation = lastHandRotation;
             
             lastHandPosition = currentHandPosition;
+            tutorialManager.CompleteStepExternally(9);
             //rb.AddForce(handMovement, ForceMode.Force);
         }
         else if (_LgrabbingActive && lGrab.action.ReadValue<float>() > 0.2f)
@@ -164,7 +179,7 @@ public class space : Sounds
             rlHand.transform.rotation = lastHandRotation;
 
             lastHandPosition = currentHandPosition;
-
+            tutorialManager.CompleteStepExternally(9);
             //rb.AddForce(handMovement, ForceMode.Force);
 
         }
@@ -214,24 +229,43 @@ public class space : Sounds
         
     }
 
-    private IEnumerator ResetCol(GameObject go)
+    public static IEnumerator ToggleCollidersCoroutine(GameObject target, float delay = 0.1f)
     {
-        Collider col = go.GetComponent<Collider>();
-        col.enabled = false;
-        yield return new WaitForSeconds(0.1f);
-        col.enabled = true;
+        if (target == null) yield break;
+
+        // Получаем все коллайдеры
+        Collider[] allColliders = target.GetComponentsInChildren<Collider>(true);
+        List<bool> originalStates = new List<bool>();
+
+        // Сохраняем оригинальные состояния и выключаем
+        foreach (Collider col in allColliders)
+        {
+            originalStates.Add(col.enabled);
+            col.enabled = false;
+        }
+
+        // Ждем указанное время
+        yield return new WaitForSeconds(delay);
+
+        // Восстанавливаем состояния только если объект существует
+        if (target != null)
+        {
+            for (int i = 0; i < allColliders.Length; i++)
+            {
+                if (allColliders[i] != null)
+                {
+                    allColliders[i].enabled = originalStates[i];
+                }
+            }
+        }
     }
+
+
 
     public void ColRes()
     {
-        StartCoroutine(ResetCol(rrHand.gameObject));
-        StartCoroutine(ResetCol(rlHand.gameObject));
-        inventoryL.selectedItem = 0;
-        inventoryL.leftGlove.SetBool("GrabbingBattery", false);
-        inventoryL.leftGlove.SetBool("GrabbingMed", false);
-        inventoryR.selectedWeapon = 0;
-        inventoryR.rightGlove.SetBool("GrabbingPistol", false);
-        inventoryR.rightGlove.SetBool("GrabbingGun", false);
+        StartCoroutine(ToggleCollidersCoroutine(rrHand.gameObject));
+        StartCoroutine(ToggleCollidersCoroutine(rlHand.gameObject));
         fpsFireManager.currentAmmo = fpsFireManager.maxAmmo;
         grenadeLaunceher.currentAmmo = grenadeLaunceher.maxAmmo;
     }

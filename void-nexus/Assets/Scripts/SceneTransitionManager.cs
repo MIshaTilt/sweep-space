@@ -5,11 +5,26 @@ using UnityEngine.SceneManagement;
 using Unity.XR.CoreUtils;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
 
 public class SceneTransitionManager : MonoBehaviour
 {
     public FadeScreen fadeScreen;
     public TMP_Dropdown dropdown;
+    [SerializeField] private InputActionProperty aButton;
+    [SerializeField] private bool isPressing = false;
+    [SerializeField] private Image myBar;
+
+    public float loadTime = 1f;
+    public float loadTimer;
+
+    private void OnEnable()
+    {
+        aButton.action.performed += nachalo;
+        aButton.action.canceled += end;
+    }
 
     public void GoToScene(int SceneIndex)
     {
@@ -55,5 +70,36 @@ public class SceneTransitionManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Movement", 0);
         }
+
+        if (isPressing)
+        {
+            loadTimer += Time.deltaTime;
+            myBar.fillAmount = loadTimer / loadTime;
+            if (loadTimer > loadTime)
+            {
+                isPressing = false;
+                myBar.fillAmount = 0f;
+                GoToSceneAsync(1);
+
+                return;
+            }
+        }
+        else
+        {
+            myBar.fillAmount = 0f;
+            loadTimer = 0f;
+        }
+    }
+
+    private void nachalo(InputAction.CallbackContext context)
+    {
+        isPressing = true;
+        Debug.Log("true");
+    }
+
+    private void end(InputAction.CallbackContext context)
+    {
+        isPressing = false;
+        Debug.Log("false");
     }
 }

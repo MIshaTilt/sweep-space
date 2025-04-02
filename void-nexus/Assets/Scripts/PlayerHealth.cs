@@ -10,6 +10,7 @@ public class PlayerHealth : Sounds
     [SerializeField] private float maxHealth;
     [SerializeField] private TextMeshProUGUI hpDisp;
     [SerializeField] private space space;
+    [SerializeField] private TutorialManager tutorialManager;
     private Vector3 lastCheckpoint;
 
     [SerializeField] private Image myNewBar;
@@ -41,6 +42,7 @@ public class PlayerHealth : Sounds
                 isReloading = false;
                 myNewBar.fillAmount = 0f;
                 health = maxHealth;
+                tutorialManager.CompleteStepExternally(5);
                 return;
             }
         }

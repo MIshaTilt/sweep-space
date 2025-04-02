@@ -13,6 +13,7 @@ TagManager:
   - camera
   - torso
   - hitbox
+  - right hand
   layers:
   - Default
   - TransparentFX
