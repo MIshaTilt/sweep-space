@@ -10,6 +10,10 @@ TagManager:
   - reload
   - pistol
   - grenadeLauncher
+  - camera
+  - torso
+  - hitbox
+  - right hand
   layers:
   - Default
   - TransparentFX
@@ -26,11 +30,11 @@ TagManager:
   - HandPlayer
   - predPoint
   - Obstacles
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Ignore Reflection
+  - Ybot
+  - Hitbox
+  - Player Collider
   - 
   - 
   - 

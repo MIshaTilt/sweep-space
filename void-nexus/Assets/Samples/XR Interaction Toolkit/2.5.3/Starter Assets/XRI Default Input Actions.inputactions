@@ -443,6 +443,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "heal",
+                    "type": "Button",
+                    "id": "5247067a-eca8-4a37-b4e7-37b92587ab5a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "skip",
+                    "type": "Button",
+                    "id": "21c07b59-f8bf-41d1-82f5-2923635411f3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -674,6 +692,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2d934e1-832b-4ee2-affe-6616b3e711b2",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
+                    "action": "heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a612159f-7f24-420c-b20d-96727521f8cd",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1239,6 +1279,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "pause",
+                    "type": "Button",
+                    "id": "939e70aa-f9b1-46ae-ac3d-da47fd49234d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "exit",
+                    "type": "Button",
+                    "id": "e0f5aaaa-4c07-4701-bbae-161996279b5d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1470,6 +1528,28 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Grip Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d743fdbc-3191-41c0-b869-d9cde57f93fc",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
+                    "action": "pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ed6e3454-73c0-4bc5-9e5c-783555184f41",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "exit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1990,6 +2070,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "heal",
+                    "type": "Button",
+                    "id": "8f7edd3b-ffd7-4afe-a323-a88f8ae9d9f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "pause",
+                    "type": "Button",
+                    "id": "917c8ba3-8a60-4d98-ad47-f7c157951e7d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -2375,6 +2473,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "047ca0ad-90c3-405b-af1f-56d4bf206036",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "heal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0472a45c-11c9-47c4-9697-c187ad84c0a3",
+                    "path": "<XRController>{RightHand}/{PrimaryTouch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller;Continuous Move;Noncontinuous Move",
+                    "action": "pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 424010}
   - component: {fileID: 19824010}
   - component: {fileID: 19924010}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4857,7 +4857,7 @@ GameObject:
   - component: {fileID: 424012}
   - component: {fileID: 19824012}
   - component: {fileID: 19924012}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9770,7 +9770,7 @@ GameObject:
   - component: {fileID: 424014}
   - component: {fileID: 10824008}
   - component: {fileID: 11424008}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9913,7 +9913,7 @@ GameObject:
   - component: {fileID: 19824014}
   - component: {fileID: 19924014}
   - component: {fileID: 11424010}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14772,7 +14772,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424018}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MuzzleFlash1
   m_TagString: Untagged
   m_Icon: {fileID: -1077886335, guid: 0000000000000000d000000000000000, type: 0}
@@ -14811,7 +14811,7 @@ GameObject:
   - component: {fileID: 424022}
   - component: {fileID: 19824018}
   - component: {fileID: 19924018}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19666,7 +19666,7 @@ GameObject:
   - component: {fileID: 426652}
   - component: {fileID: 19826652}
   - component: {fileID: 19926652}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

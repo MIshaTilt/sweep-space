@@ -1,39 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth health;
-    [SerializeField] private float time;
+    [SerializeField] private Slider slider;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameObject explosion;
+    public AudioSource audioSource;
+    public AudioClip track;
+
+    public bool undocked = false;
 
     private void Start()
     {
-        health = GetComponent<PlayerHealth>();
-        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = true;
     }
 
-    private void Update()
+    public void Undock()
     {
-        time-= Time.deltaTime;
-    }
-
-    private void PushButton()
-    {
-        rb.AddForce(new Vector3(-100, 0, 0), ForceMode.Impulse);
-
-        if (time < 0)
-        {
-            StartCoroutine(Die());
+        if(slider.value == slider.maxValue && !undocked)
+        {   
+            rb.isKinematic=false;
+            rb.AddForce(new Vector3(0, 0, -1), ForceMode.Impulse);
+            //StartCoroutine(end());
+            undocked = true;
         }
     }
 
-    private IEnumerator Die()
+    private IEnumerator end()
     {
-        yield return new WaitForSeconds(15);
-        explosion.SetActive(true);
-        health.Die();
+        yield return new WaitForSeconds(2);
+        audioSource.clip = track;
+        audioSource.Play();
     }
 }

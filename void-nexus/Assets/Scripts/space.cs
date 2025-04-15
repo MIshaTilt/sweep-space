@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.VisualScripting;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine.XR.OpenXR.Input;
 
 public class space : Sounds
 {
@@ -14,25 +13,11 @@ public class space : Sounds
     public Transform rlHand;
     public Transform rrHand;
     public Transform cam;
-    public Transform leftPred;
-    public Transform rightPred;
-    public RaycastHit rpredictionHit;
-    public RaycastHit lpredictionHit;
-
-    private Transform rdummy;
-    private Transform ldummy;
-
-    public RaycastHit predictionHit;
 
     public Transform rig;
-    public float X;
 
-    private float _gripStrength;
-    private bool _RgrabbingActive = false;
-    private bool _LgrabbingActive = false;
-    private bool lcan;
-    private bool rotationOn;
-
+    public bool _RgrabbingActive = false;
+    public bool _LgrabbingActive = false;
 
     public InputActionProperty rGrab;
     public InputActionProperty rPos;
@@ -50,9 +35,7 @@ public class space : Sounds
     public Rigidbody rb;
 
     public LayerMask grab;
-
-    public physicsHands rHand;
-    public physicsHands lHand;
+    public LayerMask ignore;
 
     RaycastHit raycastHit;
     RaycastHit eraycastHit;
@@ -68,6 +51,23 @@ public class space : Sounds
     public XRBaseController leftController, rightController;
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
+
+    public physicsHands rphysics;
+    public physicsHands lphysics;
+
+    public bool rotationOn;
+
+    public inventory inventoryR;
+    public inventoryL inventoryL;
+    public FPSFireManager fpsFireManager;
+    public grenadeLaunceher grenadeLaunceher;
+    [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private InputActionProperty bButton;
+
+    private void OnEnable()
+    {
+        bButton.action.performed += ColEna;
+    }
 
     void /*Fixed*/Update()
     {
@@ -87,10 +87,12 @@ public class space : Sounds
                 //press event
                 rb.velocity = Vector3.zero;
                 rPredPoint.SetActive(false);
-                Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out raycastHit, 2f);
+                Physics.SphereCast(rightHand.position, 0f, rightHand.forward, out raycastHit, 2f, ~ignore);
                 Debug.DrawRay(rightHand.position, rightHand.forward);
-                PlaySound(0, initialHandPosition, random: false);
+                //PlaySound(0, cam.position, random: false, destroyed: true);
+                rphysics.PlayConnect();
                 rightController.SendHapticImpulse(defaultAmplitude, defaultDuration);
+                tutorialManager.CompleteStepExternally(8);
             }
 
 
@@ -107,10 +109,12 @@ public class space : Sounds
                 //press event
                 rb.velocity = Vector3.zero;
                 lPredPoint.SetActive(false);
-                Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out raycastHit, 2f);
+                Physics.SphereCast(leftHand.position, 0f, leftHand.forward, out raycastHit, 2f, ~ignore);
                 Debug.DrawRay(leftHand.position, leftHand.forward);
-                PlaySound(0, initialHandPosition, random: false);
+                //PlaySound(0, cam.position, random: false, destroyed: true);
+                lphysics.PlayConnect();
                 leftController.SendHapticImpulse(defaultAmplitude, defaultDuration);
+                tutorialManager.CompleteStepExternally(8);
             }
 
 
@@ -119,25 +123,35 @@ public class space : Sounds
         {
             Vector3 currentHandPosition = lPos.action.ReadValue<Vector3>();
             lhandMovement = currentHandPosition - lastHandPosition;
-            Debug.Log(lhandMovement);
+            //Debug.Log(lhandMovement);
             Quaternion final = rig.transform.rotation;
             Vector3 ans = final * lhandMovement;
             rb.AddForce(ans * -1000f, ForceMode.Impulse);
             _LgrabbingActive = false;
             //release event
             lPredPoint.SetActive(true);
+            StartCoroutine(ToggleCollidersCoroutine(rlHand.gameObject));
+            if ((ans * -5000f).magnitude > 1f)
+            {
+                tutorialManager.CompleteStepExternally(10);
+            }
         }
         else if (_RgrabbingActive)
         {
             Vector3 currentHandPosition = rPos.action.ReadValue<Vector3>();
             rhandMovement = currentHandPosition - lastHandPosition;
-            Debug.Log(rhandMovement);
+            //Debug.Log(rhandMovement);
             Quaternion final = rig.transform.rotation;
             Vector3 ans = final * rhandMovement;
             rb.AddForce(ans * -1000f, ForceMode.Impulse);
             _RgrabbingActive = false;
             //release event
             rPredPoint.SetActive(true);
+            StartCoroutine(ToggleCollidersCoroutine(rrHand.gameObject));
+            if((ans * -5000f).magnitude > 1f)
+            {
+                tutorialManager.CompleteStepExternally(10);
+            }
         }
 
         /*if(Physics.Raycast(cam.position, rPos.action.ReadValue<Vector3>(), out RHit, Vector3.Distance(cam.position, rPos.action.ReadValue<Vector3>())))
@@ -157,6 +171,7 @@ public class space : Sounds
             rrHand.transform.rotation = lastHandRotation;
             
             lastHandPosition = currentHandPosition;
+            tutorialManager.CompleteStepExternally(9);
             //rb.AddForce(handMovement, ForceMode.Force);
         }
         else if (_LgrabbingActive && lGrab.action.ReadValue<float>() > 0.2f)
@@ -170,7 +185,7 @@ public class space : Sounds
             rlHand.transform.rotation = lastHandRotation;
 
             lastHandPosition = currentHandPosition;
-
+            tutorialManager.CompleteStepExternally(9);
             //rb.AddForce(handMovement, ForceMode.Force);
 
         }
@@ -187,28 +202,107 @@ public class space : Sounds
 
         //Debug.Log(turn.action.ReadValue<Vector2>());
         var modify = turn.action.ReadValue<Vector2>();
-        //Debug.Log(modify);
-        /*if (Mathf.Abs(modify.x) + Mathf.Abs(modify.y) >= 1f && !rotationOn)
+        if (PlayerPrefs.GetInt("Movement")==0)
         {
-            rotationOn = true;
-            if(Mathf.Abs(modify.x) >= Mathf.Abs(modify.y))
-            {
-                modify.y = 0f;
-            }
-            else
-            {
-                modify.x = 0f;
-            }
-            Vector2 add = new Vector2(modify.y * -turnspeed, modify.x * -turnspeed);
+            Vector2 add = new Vector2(modify.y * -turnspeed * Time.deltaTime, modify.x * -turnspeed * Time.deltaTime);
             var pls = Quaternion.Euler(add);
-            rig.transform.rotation = rig.transform.rotation * pls; ;
+            rig.transform.rotation = rig.transform.rotation * pls;
         }
-        else if(modify== Vector2.zero && rotationOn)
+        else
         {
-            rotationOn = false;
-        }*/
-        Vector2 add = new Vector2(modify.y * -turnspeed * Time.deltaTime, modify.x * -turnspeed * Time.deltaTime);
-        var pls = Quaternion.Euler(add);
-        rig.transform.rotation = rig.transform.rotation * pls;
+            if (Mathf.Abs(modify.x) + Mathf.Abs(modify.y) >= 1f && !rotationOn)
+            {
+                rotationOn = true;
+                if (Mathf.Abs(modify.x) >= Mathf.Abs(modify.y))
+                {
+                    modify.y = 0f;
+                }
+                else
+                {
+                    modify.x = 0f;
+                }
+                Vector2 add = new Vector2(modify.y * -turnspeed, modify.x * -turnspeed);
+                var pls = Quaternion.Euler(add);
+                rig.transform.rotation = rig.transform.rotation * pls; ;
+            }
+            else if (modify == Vector2.zero && rotationOn)
+            {
+                rotationOn = false;
+            }
+        }
+        //Debug.Log(modify);
+        
+        
     }
+
+    public static IEnumerator ToggleCollidersCoroutine(GameObject target, float delay = 0.1f)
+    {
+        if (target == null) yield break;
+
+        // Получаем все коллайдеры
+        Collider[] allColliders = target.GetComponentsInChildren<Collider>(true);
+        List<bool> originalStates = new List<bool>();
+
+        // Сохраняем оригинальные состояния и выключаем
+        foreach (Collider col in allColliders)
+        {
+            originalStates.Add(col.enabled);
+            col.enabled = false;
+        }
+
+        // Ждем указанное время
+        yield return new WaitForSeconds(delay);
+
+        // Восстанавливаем состояния только если объект существует
+        if (target != null)
+        {
+            for (int i = 0; i < allColliders.Length; i++)
+            {
+                if (allColliders[i] != null)
+                {
+                    allColliders[i].enabled = originalStates[i];
+                }
+            }
+        }
+    }
+
+
+
+    public void ColRes()
+    {
+        StartCoroutine(ToggleCollidersCoroutine(rrHand.gameObject));
+        StartCoroutine(ToggleCollidersCoroutine(rlHand.gameObject));
+        fpsFireManager.currentAmmo = fpsFireManager.maxAmmo;
+        grenadeLaunceher.currentAmmo = grenadeLaunceher.maxAmmo;
+    }
+
+    public void ColEna(InputAction.CallbackContext context)
+    {
+        EnableAllColliders(rrHand.gameObject);
+        EnableAllColliders(rlHand.gameObject);
+        Debug.Log("wescwef");
+    }
+
+    public static void EnableAllColliders(GameObject target)
+    {
+        if (target == null) return;
+
+        // Получаем все коллайдеры включая дочерние и неактивные объекты
+        Collider[] colliders = target.GetComponentsInChildren<Collider>(true);
+
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
+
+        Debug.Log($"Enabled {colliders.Length} colliders on {target.name}");
+    }
+
+    // Метод для вызова через контекстное меню (опционально)
+    [ContextMenu("Enable All Colliders")]
+    private void EnableCollidersContextMenu()
+    {
+        EnableAllColliders(gameObject);
+    }
+
 }

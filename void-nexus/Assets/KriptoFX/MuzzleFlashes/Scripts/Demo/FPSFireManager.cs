@@ -12,6 +12,7 @@ public class FPSFireManager : Sounds
 {
     public ImpactInfo[] ImpactElemets = new ImpactInfo[0];
     public ImpactInfo ImpactElemet;
+    public LayerMask IgnoreMe;
     [Space]
     public float BulletDistance = 100;
     public GameObject ImpactEffect;
@@ -30,6 +31,7 @@ public class FPSFireManager : Sounds
     public XRBaseController controller;
     public float defaultAmplitude = 0.2f;
     public float defaultDuration = 0.5f;
+    [SerializeField] private TutorialManager tutorialManager;
 
     public float Speed => 10.0F + (tracerSpeed - 1) * 50.0F;
     public float RotationSpeed => 72.0F;
@@ -75,6 +77,7 @@ public class FPSFireManager : Sounds
                 isReloading = false;
                 myNewBar.value = 0f;
                 currentAmmo = maxAmmo;
+                tutorialManager.CompleteStepExternally(6);
                 return;
             }
         }
@@ -129,15 +132,20 @@ public class FPSFireManager : Sounds
         {
             RaycastHit hit;
             var ray = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(ray, out hit, BulletDistance))
+            if (Physics.Raycast(ray, out hit, BulletDistance, ~IgnoreMe))
             {
-                var effect = GetImpactEffect(hit.transform.gameObject);
-                if (effect == null)
-                    effect = stockEffect;
-                var effectIstance = Instantiate(effect, hit.point, new Quaternion()) as GameObject;
-                effectIstance.transform.LookAt(hit.point + hit.normal);
-                Fire();
-                Destroy(effectIstance, 20);
+                if (hit.collider.gameObject.tag != "hitbox")
+                {
+                    var effect = GetImpactEffect(hit.transform.gameObject);
+                    if (effect == null)
+                        effect = stockEffect;
+                    var effectIstance = Instantiate(effect, hit.point, new Quaternion()) as GameObject;
+                    effectIstance.transform.LookAt(hit.point + hit.normal);
+                    Fire();
+                    Destroy(effectIstance, 20);
+                }
+
+
 
                 var impactEffectIstance = Instantiate(ImpactEffect, transform.position, transform.rotation) as GameObject;
 
@@ -155,10 +163,19 @@ public class FPSFireManager : Sounds
                     Target target = hit.transform.GetComponent<Target>();
                     target.TakeDamage(50f);
                 }
+                else if(hit.collider.gameObject.tag == "hitbox")
+                {
+                    TakeHaptic hapticTarget = hit.collider.gameObject.GetComponent<TakeHaptic>();
+                    if (hapticTarget != null)
+                    {
+                        hapticTarget.TakeShot();
+                    }
+                }
                 controller.SendHapticImpulse(defaultAmplitude, defaultDuration);
                 currentAmmo--;
                 myNewBar.value -= 1 / maxAmmo;
                 PlaySound(0,transform.position, random: true);
+                tutorialManager.CompleteStepExternally(3);
             }
 
         }

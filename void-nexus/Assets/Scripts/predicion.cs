@@ -8,6 +8,7 @@ public class predicion : MonoBehaviour
     public Transform Hand;
     public RaycastHit predictionHit;
     public LayerMask grab;
+    public LayerMask notGrab;
     public GameObject Sphere;
     public GameObject invChecker;
 
@@ -26,10 +27,10 @@ public class predicion : MonoBehaviour
     private void CheckForSwingPoints()
     {
         RaycastHit sphereCastHit;
-        Physics.SphereCast(Hand.position, 0f, Hand.forward, out sphereCastHit, 2f, grab);
+        Physics.SphereCast(Hand.position, 0f, Hand.forward, out sphereCastHit, 2f, ~notGrab);
 
         RaycastHit raycastHit;
-        Physics.Raycast(Hand.position, Hand.forward, out raycastHit, 2f, grab);
+        Physics.Raycast(Hand.position, Hand.forward, out raycastHit, 2f, ~notGrab);
 
         Vector3 realHitPoint;
 

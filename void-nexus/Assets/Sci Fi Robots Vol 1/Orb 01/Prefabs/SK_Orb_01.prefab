@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4965106596958242}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Orb_MissileLauncherLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4433493486627886}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Orb_WeaponBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 4197522329456336}
   - component: {fileID: 33377035603526300}
   - component: {fileID: 23555411895560666}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SM_Missile_Left1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4728791459045486}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Orb_Main
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4527716704040982}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RefPoint_MissileRight_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 4275305058944394}
   - component: {fileID: 33270097521392890}
   - component: {fileID: 23719382148170576}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SM_Missile_Left3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4793109397285170}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RefPoint_MissileRight_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 4687270822743170}
   - component: {fileID: 33737798025405376}
   - component: {fileID: 23697054629901520}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SM_MissileRight3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 4922832029833306}
   - component: {fileID: 33609668590739536}
   - component: {fileID: 23613012073456818}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SM_Missile_Left2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4325882771935220}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: nub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,7 +537,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4606648155436028}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RefPoint_MissileLeft_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -569,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4597982700548670}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RefPoint_MissileLeft_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 4624410152594366}
   - component: {fileID: 33372165649334710}
   - component: {fileID: 23125829729709882}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SM_Missile_Right1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -684,7 +684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4023997110728424}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RefPoint_MissileRight_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4544500801205840}
   - component: {fileID: 137765706318417180}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SK_Orb_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4405249077739272}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Orb_MissileLauncherRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -847,7 +847,8 @@ GameObject:
   - component: {fileID: 310900891069416595}
   - component: {fileID: 2618740222630355772}
   - component: {fileID: 4945042822410461877}
-  m_Layer: 0
+  - component: {fileID: 8099277036204221986}
+  m_Layer: 15
   m_Name: SK_Orb_01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -955,10 +956,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  rotationalDamp: 30
+  rotationalDamp: 50
   detectionDistance: 20
   rayCastOffset: 0.6
-  thrust: 20
+  thrust: 8
   rb: {fileID: 2222204846283691498}
 --- !u!114 &2618740222630355772
 MonoBehaviour:
@@ -987,7 +988,8 @@ MonoBehaviour:
   unactive: {fileID: 2100000, guid: 82028c2251de6b94c98725144050d215, type: 2}
   animator: {fileID: 95757004786727878}
   noise: {fileID: 5417874088305140780}
-  fire: {fileID: 1760291374798372655}
+  fire: {fileID: 7887910985836819543}
+  died: 0
 --- !u!82 &4945042822410461877
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1084,6 +1086,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &8099277036204221986
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758119621213600}
+  m_Material: {fileID: 13400000, guid: b8b43d81249bf1543adc8693f7f9078e, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25, y: 0.25, z: 1}
+  m_Center: {x: 0, y: 0.15, z: 0.35}
 --- !u!1 &1838743157181200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1116,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986636890916524}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Orb_GunBarrels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1125,7 +1148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4953568233258358}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RefPoint_MissileLeft_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,7 +1182,7 @@ GameObject:
   - component: {fileID: 4355770585414408}
   - component: {fileID: 33854706448670316}
   - component: {fileID: 23263251137854188}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SM_MissileRight2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1263,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4484196376906758}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1272,7 +1295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5284510233613873434}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1304,7 +1327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6761131759971409735}
   - component: {fileID: 5400131002894572095}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: white noise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1363,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1434,7 +1457,7 @@ GameObject:
   - component: {fileID: 3570072138819091739}
   - component: {fileID: 5157702750283145307}
   - component: {fileID: 6228468447503457117}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: EnemyFireManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1478,8 +1501,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 64b19a4efe113fb44b5c5ca2963dbc38, type: 3}
   player: {fileID: 0}
   ImpactEffect: {fileID: 124018, guid: 1f389bb139e76154582cf3c5e4f9214b, type: 3}
+  ImpactOnPlayer: {fileID: 178032, guid: dcde18a8b78f3a441808939d267cec5f, type: 3}
   cooldown: 1
   gunTip: {fileID: 4986636890916524}
+  playerHitbox:
+    serializedVersion: 2
+    m_Bits: 786431
+  spreadAmount: 0.2
   smokeTrailPrefab: {fileID: 7329845158802601835, guid: 42145b3d1792e5c46aae027fbbaa502e, type: 3}
   maxQueryDistance: 300
   tracerSpeed: 3

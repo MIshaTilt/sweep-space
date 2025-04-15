@@ -70,3 +70,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+void-nexus/Assets/Scenes/Menu/LightingData.asset
+void-nexus/Assets/Scenes/Menu/LightingData.asset.meta
+void-nexus/Assets/Scenes/MainScene/LightingData.asset
+void-nexus/Assets/Scenes/MainScene/LightingData.asset.meta

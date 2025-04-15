@@ -18,6 +18,8 @@ public class grenadeLaunceher : Sounds
 
     public TextMeshProUGUI ammo; 
     [SerializeField] private Slider myNewBar;
+    [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private PlayerHealth playerHealth;
 
     public int maxAmmo = 10;
     public int currentAmmo;
@@ -53,6 +55,7 @@ public class grenadeLaunceher : Sounds
                 isReloading = false;
                 myNewBar.value = 0f;
                 currentAmmo = maxAmmo;
+                tutorialManager.CompleteStepExternally(6);
                 return;
             }
         }
@@ -93,6 +96,11 @@ public class grenadeLaunceher : Sounds
         grenadeInstance.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * range, ForceMode.Impulse);
         PlaySound(0, spawnPoint.position, random: true);
         controller.SendHapticImpulse(defaultAmplitude, defaultDuration);
+        if (tutorialManager.currentStep == 4)
+        {
+            tutorialManager.CompleteStepExternally(4);
+            playerHealth.TakeDamage(3f);
+        }
     }
 
     IEnumerator Reload()
