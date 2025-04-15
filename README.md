@@ -5,4 +5,4 @@ The player is a cleaner sent to a space station captured by AI. The target is a 
 Final version of project supports Bhaptic TactSuit(Air + TactVisor + Tactosy for hands) and Futurift V2 chair, a dynamic virtual reality attraction
 The Futurift V2 chair is equipped with hydraulic motors that synchronize with the game application.
 
-Download - https://misha-virtual.itch.io/void-nexus
+Media + download - https://misha-virtual.itch.io/void-nexus
