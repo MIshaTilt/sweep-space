@@ -2,6 +2,7 @@ using Bhaptics.SDK2;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TakeHaptic : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TakeHaptic : MonoBehaviour
     public int damage = 3;
 
     public bool hapticRotate = false;
+    public XRBaseController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +29,20 @@ public class TakeHaptic : MonoBehaviour
 
     public void TakeShot()
     {   
-        if(hapticRotate)
+        if(eventName == "left_hand")
         {
-            BhapticsLibrary.Play(eventName, 0, 1, 1, 180f, 0);
+            controller.SendHapticImpulse(1, 0.1f);
         }
-        else
+        else if(eventName != "Default" && eventName != null)
         {
-            BhapticsLibrary.Play(eventName, 0, 1, 1, 0f, 0);
+            if (hapticRotate)
+            {
+                BhapticsLibrary.Play(eventName, 0, 1, 1, 180f, 0);
+            }
+            else
+            {
+                BhapticsLibrary.Play(eventName, 0, 1, 1, 0f, 0);
+            }
         }
         health.TakeDamage(damage);
     }

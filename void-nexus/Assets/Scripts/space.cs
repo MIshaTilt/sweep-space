@@ -62,6 +62,12 @@ public class space : Sounds
     public FPSFireManager fpsFireManager;
     public grenadeLaunceher grenadeLaunceher;
     [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private InputActionProperty bButton;
+
+    private void OnEnable()
+    {
+        bButton.action.performed += ColEna;
+    }
 
     void /*Fixed*/Update()
     {
@@ -269,4 +275,34 @@ public class space : Sounds
         fpsFireManager.currentAmmo = fpsFireManager.maxAmmo;
         grenadeLaunceher.currentAmmo = grenadeLaunceher.maxAmmo;
     }
+
+    public void ColEna(InputAction.CallbackContext context)
+    {
+        EnableAllColliders(rrHand.gameObject);
+        EnableAllColliders(rlHand.gameObject);
+        Debug.Log("wescwef");
+    }
+
+    public static void EnableAllColliders(GameObject target)
+    {
+        if (target == null) return;
+
+        // Получаем все коллайдеры включая дочерние и неактивные объекты
+        Collider[] colliders = target.GetComponentsInChildren<Collider>(true);
+
+        foreach (Collider collider in colliders)
+        {
+            collider.enabled = true;
+        }
+
+        Debug.Log($"Enabled {colliders.Length} colliders on {target.name}");
+    }
+
+    // Метод для вызова через контекстное меню (опционально)
+    [ContextMenu("Enable All Colliders")]
+    private void EnableCollidersContextMenu()
+    {
+        EnableAllColliders(gameObject);
+    }
+
 }

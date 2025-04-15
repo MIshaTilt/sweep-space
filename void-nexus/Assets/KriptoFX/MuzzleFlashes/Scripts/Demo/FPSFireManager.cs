@@ -134,13 +134,18 @@ public class FPSFireManager : Sounds
             var ray = new Ray(transform.position, transform.forward);
             if (Physics.Raycast(ray, out hit, BulletDistance, ~IgnoreMe))
             {
-                var effect = GetImpactEffect(hit.transform.gameObject);
-                if (effect == null)
-                    effect = stockEffect;
-                var effectIstance = Instantiate(effect, hit.point, new Quaternion()) as GameObject;
-                effectIstance.transform.LookAt(hit.point + hit.normal);
-                Fire();
-                Destroy(effectIstance, 20);
+                if (hit.collider.gameObject.tag != "hitbox")
+                {
+                    var effect = GetImpactEffect(hit.transform.gameObject);
+                    if (effect == null)
+                        effect = stockEffect;
+                    var effectIstance = Instantiate(effect, hit.point, new Quaternion()) as GameObject;
+                    effectIstance.transform.LookAt(hit.point + hit.normal);
+                    Fire();
+                    Destroy(effectIstance, 20);
+                }
+
+
 
                 var impactEffectIstance = Instantiate(ImpactEffect, transform.position, transform.rotation) as GameObject;
 
